@@ -1,0 +1,7 @@
+*.pyc
+venv
+.idea
+.vscode
+
+app/static/img/
+app/static/svg/

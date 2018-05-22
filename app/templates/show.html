@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 144.31372549019608" clip-path="url(#clip)"
+            width="512" height="288.62745098039215">
+        <defs>
+            <clipPath id="clip" clipPathUnits="objectBoundingBox">
+                <rect x="0" y="0" width="256" height="144.31372549019608"/>
+            </clipPath>
+        </defs>
+    </svg>
+</div>
+
+<script>var svg_data = JSON.parse('{{ svg_data | safe }}');</script>
+<script src="/static/js/show.js"></script>
+{% endblock %}

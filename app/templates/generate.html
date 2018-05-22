@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-10 col-md-offset-1 col-sm-12 shadowed-div">
+
+    <section id="output">
+        <div>
+            <h3>Original</h3>
+            <div id="original"></div>
+        </div>
+        <div>
+            <h3>Result <span id="steps"></span></h3>
+            <div class="raster" id="raster"></div>
+            <div class="vector" id="vector"></div>
+            <label><input type="radio" name="type" value="raster" checked="checked" />Raster image: right-click to save</label><br/>
+            <label><input type="radio" name="type" value="vector" />Vector image: copy&amp;paste data from the text area below</label><br/>
+            
+            <form id="vector-form" method="post">
+                <textarea class="vector" id="vector-text" name="vector" spellcheck="false"></textarea>
+            </form>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    var imgPath = "{{ img_path }}";
+</script>
+<script src="/static/js/primitivizer.js"></script>
+{% endblock %}
