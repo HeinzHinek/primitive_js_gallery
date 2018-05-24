@@ -16,10 +16,13 @@ def index():
 
 @app.route('/show')
 def show():
-    svg_path = os.path.join(BASEDIR, 'app', 'static', 'svg', 'IMAG0046.svg')
-    svg_data = utils.parse_svg(svg_path)
+    img_path = '/static/img/IMAG0175.jpg'
+    svg_path = os.path.join(BASEDIR, 'app', 'static', 'svg', 'IMAG0175.svg')
+    with open(svg_path) as infile:
+        svg_data = infile.read()
     return render_template('show.html',
-                           svg_data=json.dumps(svg_data))
+                           img_path=img_path,
+                           svg_data=svg_data)
 
 
 @app.route('/generate', methods=['GET', 'POST'])
