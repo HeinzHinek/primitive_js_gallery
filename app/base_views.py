@@ -10,7 +10,11 @@ from config import BASEDIR, IMG_DIR, SVG_DIR, IMAGE_NAMES
 
 @app.route('/')
 def index():
-    return 'ahoj'
+    return render_template('index.html')
+
+@app.route('/intro')
+def intro():
+    return render_template('intro.html')
 
 
 @app.route('/show')

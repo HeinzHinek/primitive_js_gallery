@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<audio controls style="display: none;" autoplay loop>
+    <source src="/static/sound/01.mp3" type="audio/mpeg">
+</audio>
+
+
+<div id="psychedelic"></div>
+<img id="img" class="clickable-img" src="/static/other_img/pixelated.png" style="display: none;"/>
+<div id="msg" style="display: none;"></div>
+
+
+<script src="/static/js/intro.js"></script>
+{% endblock %}
