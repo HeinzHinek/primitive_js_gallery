@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
-import glob
 import json
 
 import utils
 from app import app
 from flask import render_template, redirect, url_for, request, jsonify
-from config import BASEDIR, IMG_DIR, SVG_DIR
+from config import BASEDIR, IMG_DIR, SVG_DIR, IMAGE_NAMES
 
 
 @app.route('/')
@@ -16,13 +15,26 @@ def index():
 
 @app.route('/show')
 def show():
-    img_path = '/static/img/IMAG0175.jpg'
-    svg_path = os.path.join(BASEDIR, 'app', 'static', 'svg', 'IMAG0175.svg')
+    img_idx = int(request.args.get('img_idx', 0))
+
+    if img_idx >= len(IMAGE_NAMES):
+        img_idx = 0
+
+    img_name = IMAGE_NAMES[img_idx]
+
+    img_idx += 1
+
+    img_path = '/static/img/{}'.format(img_name)
+    svg_path = os.path.join(BASEDIR, 'app', 'static', 'svg', \
+            '{}.svg'.format(img_name.split('.')[0]))
+
     with open(svg_path) as infile:
         svg_data = infile.read()
+
     return render_template('show.html',
                            img_path=img_path,
-                           svg_data=svg_data)
+                           svg_data=svg_data,
+                           img_idx=img_idx)
 
 
 @app.route('/generate', methods=['GET', 'POST'])

@@ -1,8 +1,8 @@
 
 function nextImg() {
     setTimeout(function() {
-        // Send next image
-    }, 5000);
+        window.location.href = '/show?img_idx=' + imgIdx;
+    }, 4000);
 }
 
 function showImg() {
@@ -53,6 +53,6 @@ $(document).ready(function() {
             } else {
                 showImg();
             }
-        }, i/20)
+        }, 2)
     })($paths.length);
 });
